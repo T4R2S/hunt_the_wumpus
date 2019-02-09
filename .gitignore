@@ -3,7 +3,7 @@
 
 /out
 
-workspace.xml
+.idea/
 
 # Log file
 *.log
