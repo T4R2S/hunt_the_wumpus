@@ -2,7 +2,7 @@ package test.game;
 
 import org.junit.Assert;
 import org.junit.Test;
-import wumpus.game.Direction;
+import wumpus.game.enums.Direction;
 import wumpus.game.Player;
 import wumpus.game.Position;
 
@@ -91,10 +91,8 @@ public class PlayerTest {
         //arrange
         Player player = new Player();
 
-        byte[] rooms = {1, 2, 3, 4, 5};
-
         //act
-        boolean result = player.attack(rooms);
+        boolean result = player.attack(Direction.NORTH);
 
         //assert
         Assert.assertTrue(result);

@@ -1,5 +1,7 @@
 package wumpus.game;
 
+import wumpus.game.enums.Direction;
+
 public class Player {
     private Position position;
 
@@ -42,7 +44,7 @@ public class Player {
         }
     }
 
-    public boolean attack(byte[] rooms) {
+    public boolean attack(Direction direction) {
         return true;
     }
 
