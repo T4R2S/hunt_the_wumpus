@@ -1,4 +1,8 @@
 package wumpus.game;
 
-class Wumpus extends Player {
+public class Wumpus extends Player {
+
+    public Wumpus(Position position) {
+        super(position);
+    }
 }

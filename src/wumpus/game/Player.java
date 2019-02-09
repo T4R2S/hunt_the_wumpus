@@ -3,7 +3,7 @@ package wumpus.game;
 import wumpus.game.enums.Direction;
 
 public class Player {
-    private Position position;
+    protected Position position;
 
     public Player() {
         position = new Position(0, 0);
@@ -44,8 +44,8 @@ public class Player {
         }
     }
 
-    public boolean attack(Direction direction) {
-        return true;
+    public Arrow attack(Direction direction) {
+        return new Arrow(direction);
     }
 
     public Position getPosition() {
