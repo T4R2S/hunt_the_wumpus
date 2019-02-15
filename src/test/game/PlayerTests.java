@@ -3,12 +3,12 @@ package test.game;
 import org.junit.Assert;
 import org.junit.Test;
 import wumpus.game.Arrow;
-import wumpus.game.enums.Direction;
 import wumpus.game.Player;
 import wumpus.game.Position;
+import wumpus.game.enums.Direction;
 
 
-public class PlayerTest {
+public class PlayerTests {
 
     @Test
     public void move_north_returnsNewPosition() {
@@ -33,9 +33,9 @@ public class PlayerTest {
     public void move_west_returnsNewPosition() {
 
         //arrange
-        Position expectedPosition = new Position(-1,0);
+        Position expectedPosition = new Position(0,0);
 
-        Position position = new Position(0,0);
+        Position position = new Position(1,0);
 
         Player player = new Player(position);
 
@@ -52,9 +52,9 @@ public class PlayerTest {
     public void move_south_returnsNewPosition() {
 
         //arrange
-        Position expectedPosition = new Position(0,-1);
+        Position expectedPosition = new Position(0,0);
 
-        Position position = new Position(0,0);
+        Position position = new Position(0,1);
 
         Player player = new Player(position);
 
@@ -87,6 +87,16 @@ public class PlayerTest {
     }
 
     @Test
+    public void newPlayerTest(){
+
+        //arrange - act
+        Player player = new Player();
+
+        //assert
+        Assert.assertEquals(5, player.getCountOfArrows());
+    }
+
+    @Test
     public void attackTest() {
 
         //arrange
@@ -97,6 +107,19 @@ public class PlayerTest {
 
         //assert
         Assert.assertNotNull(result);
+        Assert.assertEquals(4, player.getCountOfArrows());
+    }
 
+    @Test
+    public void setDeathTest(){
+
+        //arrange
+        Player player = new Player();
+
+        //act
+        player.setDeath();
+
+        //assert
+        Assert.assertTrue(player.getDeath());
     }
 }

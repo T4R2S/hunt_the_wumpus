@@ -5,7 +5,7 @@ import org.junit.Test;
 import wumpus.game.Room;
 import wumpus.game.enums.RoomType;
 
-public class RoomTest {
+public class RoomTests {
 
     @Test
     public void newRoom_returnsEmptyRoom() {

@@ -1,5 +1,6 @@
 package wumpus.game;
 
+import javafx.geometry.Pos;
 import wumpus.game.enums.RoomType;
 
 import java.util.Random;
@@ -8,36 +9,56 @@ public class Game {
 
     private Player player;
     private Wumpus wumpus;
-    private GameMap map;
+    private IGameMap map;
 
-    // Скорее всего это лучше перенести в конструктор
-    public Game() {
+    public Game(IGameMap gameMap) {
+        map = gameMap;
+    }
 
-        map = new GameMap();
+    public void init() {
+
+        int rows = map.getRows();
+        int cols = map.getCols();
 
         Random random = new Random();
 
         while (player == null) {
 
-            int x = random.nextInt(5);
-            int y = random.nextInt(4);
+            int x = random.nextInt(rows);
+            int y = random.nextInt(cols);
 
             Room room = map.getRooms()[x][y];
 
-            if (player == null && room.getType() == RoomType.Empty)
+            if (room.getType() == RoomType.Empty)
                 player = new Player(new Position(x, y));
         }
 
         while (wumpus == null) {
 
-            int x = random.nextInt(5);
-            int y = random.nextInt(4);
+            int x = random.nextInt(rows);
+            int y = random.nextInt(cols);
 
-            Room room = map.getRooms()[x][y];
-
-            if (wumpus == null && player.getPosition().getX() != x && player.getPosition().getY() != y)
+            if (!player.getPosition().equals(new Position(x, y)))
                 wumpus = new Wumpus(new Position(x, y));
         }
+    }
+
+    public boolean checkPit(Position position) {
+
+//        Position playerPosition = getPlayer().getPosition();
+        Room room = map.getRoom(position);
+
+        return room.getType() == RoomType.Pit;
+    }
+
+    public void checkBats() {
+
+    }
+
+    public boolean checkWumpus(Position position) {
+        Position wumpusPosition = getWumpus().getPosition();
+
+        return wumpusPosition.equals(position);
     }
 
     public Player getPlayer() {
@@ -48,7 +69,12 @@ public class Game {
         return wumpus;
     }
 
-    public GameMap getMap() {
+    public IGameMap getMap() {
         return map;
+    }
+
+    public void checkArrow() {
+        if (getPlayer().getCountOfArrows() == 0)
+            getPlayer().setDeath();
     }
 }

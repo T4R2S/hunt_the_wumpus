@@ -4,15 +4,22 @@ import wumpus.game.enums.RoomType;
 
 import java.util.Random;
 
-public class GameMap {
+public class GameMap implements IGameMap{
+    private final int rows;
+    private final int cols;
     private Room[][] rooms;
 
-    public GameMap() {
+    public GameMap(){
+        this(5,4);
+    }
+
+    public GameMap(int rows, int cols) {
+
+        this.rows = rows;
+        this.cols = cols;
 
         Random random = new Random();
 
-        int rows = 5;
-        int cols = 4;
         int countOfRoomsWithBats = 2;
         int countOfRoomsWithPit = 2;
 
@@ -51,5 +58,19 @@ public class GameMap {
 
     public Room[][] getRooms() {
         return rooms;
+    }
+
+    @Override
+    public int getRows() {
+        return this.rows;
+    }
+
+    @Override
+    public int getCols() {
+        return this.cols;
+    }
+
+    public Room getRoom(Position position) {
+        return rooms[position.getX()][position.getY()];
     }
 }

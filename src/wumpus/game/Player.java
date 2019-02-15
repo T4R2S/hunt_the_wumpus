@@ -2,16 +2,21 @@ package wumpus.game;
 
 import wumpus.game.enums.Direction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     protected Position position;
+    private boolean isDeath;
+    private byte arrows;
 
     public Player() {
-        position = new Position(0, 0);
+        this(new Position(0, 0));
     }
 
     public Player(Position position) {
-
         this.position = position;
+        this.arrows = 5;
     }
 
     public boolean move(Direction direction) {
@@ -45,10 +50,23 @@ public class Player {
     }
 
     public Arrow attack(Direction direction) {
+        this.arrows--;
         return new Arrow(direction);
     }
 
     public Position getPosition() {
         return position;
+    }
+
+    public void setDeath() {
+        isDeath = true;
+    }
+
+    public boolean getDeath(){
+        return isDeath;
+    }
+
+    public int getCountOfArrows() {
+        return arrows;
     }
 }

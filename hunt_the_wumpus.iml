@@ -50,5 +50,8 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mockito-core-2.24.0" level="project" />
+    <orderEntry type="library" name="mockito-junit-jupiter-2.24.0" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-core:2.24.0" level="application" />
   </component>
 </module>
