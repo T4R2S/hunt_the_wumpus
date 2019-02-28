@@ -11,14 +11,12 @@ import wumpus.game.enums.Direction;
 public class PlayerTests {
 
     @Test
-    public void move_north_returnsNewPosition() {
+    public void move_north_returnsTrueWithNewPosition() {
 
         //arrange
         Position expectedPosition = new Position(0,1);
 
-        Position position = new Position(0,0);
-
-        Player player = new Player(position);
+        Player player = new Player(new Position(0,0));
 
         //act
         boolean result = player.move(Direction.NORTH);
@@ -30,7 +28,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void move_west_returnsNewPosition() {
+    public void move_west_returnsTrueWithNewPosition() {
 
         //arrange
         Position expectedPosition = new Position(0,0);
@@ -49,7 +47,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void move_south_returnsNewPosition() {
+    public void move_south_returnsTrueWithNewPosition() {
 
         //arrange
         Position expectedPosition = new Position(0,0);
@@ -68,7 +66,7 @@ public class PlayerTests {
     }
 
     @Test
-    public void move_east_returnsNewPosition() {
+    public void move_east_returnsTrueWithNewPosition() {
 
         //arrange
         Position expectedPosition = new Position(1,0);

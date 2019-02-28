@@ -2,9 +2,6 @@ package wumpus.game;
 
 import wumpus.game.enums.Direction;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Player {
     protected Position position;
     private boolean isDeath;
@@ -14,14 +11,9 @@ public class Player {
         this(new Position(0, 0));
     }
 
-    public Player(Position position) {
-        this.position = position;
-        this.arrows = 5;
-    }
-
     public boolean move(Direction direction) {
 
-        int x,y;
+        int x, y;
 
         switch (direction) {
             case NORTH:
@@ -49,20 +41,30 @@ public class Player {
         }
     }
 
+    public Player(Position position) {
+        this.position = position;
+        this.arrows = 5;
+    }
+
     public Arrow attack(Direction direction) {
         this.arrows--;
-        return new Arrow(direction);
+        return new Arrow(direction, position);
     }
 
     public Position getPosition() {
         return position;
     }
 
+    public void setPosition(int x, int y) {
+        position.setX(x);
+        position.setY(y);
+    }
+
     public void setDeath() {
         isDeath = true;
     }
 
-    public boolean getDeath(){
+    public boolean getDeath() {
         return isDeath;
     }
 

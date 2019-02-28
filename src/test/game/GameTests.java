@@ -1,8 +1,8 @@
 package test.game;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 import wumpus.game.*;
 import wumpus.game.enums.RoomType;
 
@@ -103,15 +103,5 @@ public class GameTests {
         //assert
         Assert.assertEquals(0, game.getPlayer().getCountOfArrows());
         Assert.assertTrue(game.getPlayer().getDeath());
-    }
-
-    @Test
-    public void checkWumpus_wumpusDeath(){
-
-        //arrange
-
-        //act
-
-        //assert
     }
 }

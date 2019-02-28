@@ -1,6 +1,5 @@
 package wumpus.game;
 
-import javafx.geometry.Pos;
 import wumpus.game.enums.RoomType;
 
 import java.util.Random;

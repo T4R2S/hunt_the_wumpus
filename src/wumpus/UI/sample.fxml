@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-
 <?import javafx.scene.layout.StackPane?>
+
 <GridPane alignment="center" hgap="10" minHeight="500.0" minWidth="370.0" stylesheets="@main.css" vgap="10"
           xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="wumpus.UI.Controller">
@@ -24,78 +24,70 @@
         <RowConstraints/>
         <RowConstraints/>
     </rowConstraints>
-    <children>
-        <StackPane id="game_map_pane" styleClass="game-map" GridPane.columnSpan="4" GridPane.halignment="CENTER"
-                   GridPane.rowIndex="1" GridPane.valignment="CENTER">
-            <Canvas fx:id="gameMap" height="200.0" width="344.0"/>
-        </StackPane>
-        <GridPane id="action_panels" alignment="CENTER" GridPane.columnSpan="4" GridPane.rowIndex="2">
+    <StackPane id="game_map_pane" styleClass="game-map" GridPane.columnSpan="4" GridPane.halignment="CENTER"
+               GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <Canvas fx:id="gameMap" height="200.0" width="250.0"/>
+    </StackPane>
+    <GridPane id="action_panels" alignment="CENTER" GridPane.columnSpan="4" GridPane.rowIndex="2">
+        <columnConstraints>
+            <ColumnConstraints/>
+            <ColumnConstraints/>
+            <ColumnConstraints/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints/>
+            <RowConstraints/>
+        </rowConstraints>
+        <GridPane id="move_buttons" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <columnConstraints>
-                <ColumnConstraints/>
-                <ColumnConstraints/>
-                <ColumnConstraints/>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints/>
                 <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
             </rowConstraints>
-            <children>
-                <GridPane id="move_buttons" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                    </rowConstraints>
-                    <children>
-                        <Label alignment="CENTER" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                        <Button onAction="#moveNorth" mnemonicParsing="false" text="NORTH"
-                                GridPane.columnIndex="2"
-                                GridPane.rowIndex="2"/>
-                        <Button onAction="#moveWest" mnemonicParsing="false" text="WEST"
-                                GridPane.columnIndex="1"
-                                GridPane.rowIndex="3"/>
-                        <Button onAction="#moveEast" mnemonicParsing="false" text="EAST"
-                                GridPane.columnIndex="3"
-                                GridPane.rowIndex="3"/>
-                        <Button onAction="#moveSouth" mnemonicParsing="false" text="SOUTH"
-                                GridPane.columnIndex="2"
-                                GridPane.rowIndex="4"/>
-                    </children>
-                </GridPane>
-                <GridPane id="attack_buttons" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                    <columnConstraints>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                        <ColumnConstraints halignment="CENTER"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                        <RowConstraints/>
-                    </rowConstraints>
-                    <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="Attack" textAlignment="CENTER"
-                               GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-                        <Button mnemonicParsing="false" text="NORTH" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
-                        <Button mnemonicParsing="false" text="WEST" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-                        <Button mnemonicParsing="false" text="EAST" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
-                        <Button mnemonicParsing="false" text="SOUTH" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-                    </children>
-                </GridPane>
-            </children>
+            <Label alignment="CENTER" text="Move" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <Button mnemonicParsing="false" onAction="#handleMoveNorthAction" text="NORTH" GridPane.columnIndex="2"
+                    GridPane.rowIndex="2"/>
+            <Button mnemonicParsing="false" onAction="#handleMoveWestAction" text="WEST" GridPane.columnIndex="1"
+                    GridPane.rowIndex="3"/>
+            <Button mnemonicParsing="false" onAction="#handleMoveEastAction" text="EAST" GridPane.columnIndex="3"
+                    GridPane.rowIndex="3"/>
+            <Button mnemonicParsing="false" onAction="#handleMoveSouthAction" text="SOUTH" GridPane.columnIndex="2"
+                    GridPane.rowIndex="4"/>
         </GridPane>
-        <TextArea fx:id="gameLog" prefHeight="100.0" prefWidth="100.0" text="test message" GridPane.columnSpan="4"
-                  GridPane.rowIndex="3" editable="false"/>
-    </children>
+        <GridPane id="attack_buttons" alignment="CENTER_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
+                <ColumnConstraints halignment="CENTER"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Attack" textAlignment="CENTER"
+                   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <Button mnemonicParsing="false" onAction="#handleAttackNorthAction" text="NORTH" GridPane.columnIndex="2"
+                    GridPane.rowIndex="2"/>
+            <Button mnemonicParsing="false" onAction="#handleAttackWestAction" text="WEST" GridPane.columnIndex="1"
+                    GridPane.rowIndex="3"/>
+            <Button mnemonicParsing="false" onAction="#handleAttackEastAction" text="EAST" GridPane.columnIndex="3"
+                    GridPane.rowIndex="3"/>
+            <Button mnemonicParsing="false" onAction="#handleAttackSouthAction" text="SOUTH" GridPane.columnIndex="2"
+                    GridPane.rowIndex="4"/>
+        </GridPane>
+    </GridPane>
+    <TextArea fx:id="gameLog" editable="false" prefHeight="100.0" prefWidth="100.0" text="test message"
+              GridPane.columnSpan="4" GridPane.rowIndex="3"/>
 </GridPane>

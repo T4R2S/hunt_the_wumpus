@@ -6,6 +6,8 @@ import wumpus.game.Position;
 
 public class RoomViewModel {
 
+    final int height = 40;
+    final int width = 40;
     private Position position;
 
 
@@ -13,9 +15,9 @@ public class RoomViewModel {
         this.position = position;
     }
 
-    public void draw(GraphicsContext gc) {
-        gc.setStroke(Color.BLUE);
+    public void draw(GraphicsContext gc, Color color) {
+        gc.setStroke(color);
         gc.setLineWidth(5);
-        gc.strokeRoundRect(position.getX() * 50, position.getY() * 50, 40, 40, 10, 10);
+        gc.strokeRoundRect(position.getX() * 50, position.getY() * 50, width, height, 10, 10);
     }
 }

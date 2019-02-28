@@ -11,6 +11,10 @@ public class Position {
         this.y = y;
     }
 
+    public Position(Position position) {
+        this(position.getX(), position.getY());
+    }
+
     public int getX() {
         return x;
     }
@@ -39,5 +43,13 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return "Position {" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

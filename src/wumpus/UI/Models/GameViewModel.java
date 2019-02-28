@@ -1,38 +1,60 @@
 package wumpus.UI.Models;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import wumpus.game.Game;
-import wumpus.game.GameMap;
 import wumpus.game.Position;
 import wumpus.game.Room;
 import wumpus.game.enums.RoomType;
 
 import java.io.FileNotFoundException;
 
-public class GameViewModel extends Game {
+public class GameViewModel {
 
     private PlayerViewModel player;
+    private GameMapViewModel mapVM;
+    private Game game;
 
-    public GameViewModel() throws FileNotFoundException {
-        super(new GameMap());
+    public GameViewModel(Game game) throws FileNotFoundException {
 
-        init();
+        this.game = game;
 
-        player = new PlayerViewModel(super.getPlayer());
+        game.init();
+
+        player = new PlayerViewModel(game.getPlayer());
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     public void draw(GraphicsContext gc) {
 
         player.draw(gc);
 
-        GameMapViewModel mapViewModel = new GameMapViewModel(getMap());
+        mapVM = new GameMapViewModel(game.getMap());
 
-        mapViewModel.draw(gc);
+        mapVM.draw(gc, game.getPlayer().getPosition());
     }
 
-    public RoomType getRoomInfo(Position playerPosition) {
-        Room room = getMap().getRooms()[playerPosition.getX()][playerPosition.getY()];
+    public RoomType getRoomInfo(Position position) {
+
+        int x = position.getX();
+        int y = position.getY();
+
+        if (game.getMap().getRooms().length <= x || game.getMap().getRooms()[0].length <= y || x < 0 || y < 0)
+            return null;
+
+        Room room = game.getMap().getRooms()[x][y];
 
         return room.getType();
+    }
+
+    public void setRoomInfo(GraphicsContext gc,Position position, Color color){
+        mapVM.setRoomColor(gc, position, color);
+    }
+
+    public PlayerViewModel getPlayerViewModel() {
+        return player;
     }
 }
