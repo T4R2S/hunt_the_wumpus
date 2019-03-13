@@ -111,9 +111,12 @@ public class Controller {
 
         Random random = new Random();
 
-        if (random.nextInt(3) != 1)
-            game.getGame().getWumpus().move();
+        if (random.nextInt(3) != 1) {
+            int cols = game.getGame().getMap().getCols();
+            int rows = game.getGame().getMap().getRows();
 
+            game.getGame().getWumpus().move(cols, rows);
+        }
         Position playerPosition = game.getPlayerViewModel().getPlayer().getPosition();
 
         if (game.getGame().checkWumpus(playerPosition))

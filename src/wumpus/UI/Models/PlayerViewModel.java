@@ -19,7 +19,7 @@ public class PlayerViewModel {
     }
 
     private Player player;
-    private Image image = new Image(new FileInputStream("/Users/romantrufanov/IdeaProjects/hunt_the_wumpus/src/wumpus/UI/images.png"), width, height, false, false);
+    private Image image = new Image(new FileInputStream(getClass().getResource("../images.png").getFile()), width, height, false, false);
 
     public PlayerViewModel(Player player) throws FileNotFoundException {
         this.player = player;
